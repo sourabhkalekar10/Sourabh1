@@ -1,0 +1,29 @@
+package Practice;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Mvn1 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub\
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://www.google.com/");
+		driver.findElement(By.name("q")).sendKeys("Selenium");
+		List<WebElement> allsuggestions = driver.findElements(By.xpath("//li[@class='sbct' and not(@id='YMXe')]"));
+		int count = allsuggestions.size();
+		System.out.println(count);
+        for(WebElement ele : allsuggestions) {
+        	System.out.println(ele.getText());
+        }
+        
+	}
+
+}
